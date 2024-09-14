@@ -3,7 +3,7 @@ import "./globals.css";
 import { QuizProvider } from "@/context/QuizContext";
 
 export const metadata: Metadata = {
-  title: "Quiz App",
+  title: "QuizApp",
   description: "A quiz app built with Next.js",
 };
 
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="w-full md:h-screen h-full">
         <QuizProvider>{children}</QuizProvider>
       </body>
     </html>

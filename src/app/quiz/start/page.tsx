@@ -6,11 +6,11 @@ import { Button } from "@nextui-org/button";
 function QuizPage() {
   const { questions, questionId, setQuestionId } = useQuiz();
   return (
-    <main className="h-full w-full flex justify-between md:py-16 pt-10">
-      <div className="mx-10 p-5 bg-black/10 rounded-md shadow-lg">
+    <main className="h-screen w-full flex justify-between bg-[#F3F3F7]">
+      <div className="p-2 bg-transparent w-full h-full">
         <QuestionInfo key={questionId} questionId={questionId} />
       </div>
-      <aside className="flex flex-col items-center mx-10 p-5 bg-black/10 rounded-md shadow-lg">
+      <aside className="flex flex-col m-2 items-center p-5 bg-white rounded-md shadow-lg">
         <p className="font-semibold text-lg">Quiz Navigation</p>
         <div className="my-3">
           {questions?.map((question, index) => (

@@ -1,3 +1,5 @@
+import { Button } from "@nextui-org/button";
+
 function FormHome({
   handleSubmit,
   value,
@@ -8,17 +10,17 @@ function FormHome({
   handleChange: any;
 }) {
   return (
-    <form className="flex justify-between my-10" onSubmit={handleSubmit}>
+    <form className="flex w-full m-10 p-4" onSubmit={handleSubmit}>
       <input
         type="text"
-        className="bg-black/10 mx-4 rounded-md text-black/80 text-lg p-2 md:w-96"
+        className="bg-black/10 mx-4 rounded-md ps-5 text-black/80 text-lg p-2 w-3/4"
         placeholder="Enter your name"
         value={value}
         onChange={handleChange}
       />
-      <button className="py-2 px-4 bg-[#6A5AE0] text-white font-medium text-lg rounded-md">
+      <Button className="py-2 text-center px-10 mx-3 bg-[#6A5AE0] text-white font-medium md:text-lg rounded-md">
         Start
-      </button>
+      </Button>
     </form>
   );
 }
