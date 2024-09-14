@@ -9,9 +9,6 @@ function Header() {
           <li>
             <a href="/how-it-works">How it works?</a>
           </li>
-          <li>
-            <a href="/quiz">About us</a>
-          </li>
         </ul>
       </nav>
     </header>

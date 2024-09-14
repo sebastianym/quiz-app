@@ -34,7 +34,7 @@ export default function Home() {
     saveToLocalStorage(value);
 
     //We redirect to the quiz page
-    router.push("/quiz");
+    router.push("/topics");
   };
 
   //local storage
@@ -72,7 +72,7 @@ export default function Home() {
                 Let's get started with the quizzes!
               </p>
               <Button
-                onClick={() => router.push("/quiz")}
+                onClick={() => router.push("/topics")}
                 className="lg:py-2 py-1 px-5 lg:px-10 mx-3 bg-[#6A5AE0] text-white font-medium lg:text-lg md:text-base rounded-sm"
               >
                 Start

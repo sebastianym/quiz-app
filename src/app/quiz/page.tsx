@@ -1,41 +1,37 @@
 "use client";
-import QuizCard from "@/components/Quiz/QuizCard";
 import { useQuiz } from "@/context/QuizContext";
-import { useEffect } from "react";
-import Header from "@/components/Home/Header";
+import QuestionInfo from "@/components/Quiz/QuestionInfo";
+import { Button } from "@nextui-org/button";
 
-function Home() {
-  const { name, getFromLocalStorage } = useQuiz();
-
-  useEffect(() => {
-    getFromLocalStorage();
-  }, []);
-
+function QuizPage() {
+  const { questions, questionId, setQuestionId } = useQuiz();
   return (
-    <main className="flex flex-col justify-evenly h-full bg-white">
-      <Header />
-      <div className="md:m-8 mx-5 px-5 h-4/5 bg-white">
-        <h2 className="md:text-3xl text-2xl font-semibold">
-          Welcome <span className="text-[#771cb3]">{name}</span>! 😀
-        </h2>
-        <p className="md:text-xl text-lg mt-4">
-          Here are the topics to choose from, select one and start the quiz. Do
-          you have any questions about
-          <a href="/how-it-works" className="text-[#771cb3]">
-            how it works?
-          </a>
-        </p>
-        <div className="mt-5">
-          <div className="md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between items-center md:mt-7 mt-5 gap-10">
-            <QuizCard />
-            <QuizCard />
-            <QuizCard />
-            <QuizCard />
-          </div>
-        </div>
+    <main className="h-screen w-full flex justify-between items-center p-10">
+      <div className="px-2 w-full">
+        <QuestionInfo key={questionId} questionId={questionId} />
       </div>
+      <aside className="bg-white rounded-md shadow-lg">
+        <div className="bg-[#6A5AE0] text-white p-4 rounded-t-medium">
+          <h3 className="font-bold text-center">Question Navigator</h3>
+        </div>
+        <div className="grid grid-cols-5 gap-2 p-4">
+          {questions?.map((question, index) => (
+            <Button
+              key={question.id}
+              className={`w-10 h-10 p-0 border-medium ${
+                question.id === questionId
+                  ? "bg-[#6A5AE0] text-white"
+                  : "hover:bg-[#6A5AE0] hover:text-white"
+              }`}
+              onClick={() => setQuestionId(question.id)}
+            >
+              {question.id}
+            </Button>
+          ))}
+        </div>
+      </aside>
     </main>
   );
 }
 
-export default Home;
+export default QuizPage;

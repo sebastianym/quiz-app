@@ -18,7 +18,7 @@ function FormHome({
         value={value}
         onChange={handleChange}
       />
-      <Button className="py-2 text-center px-10 mx-3 bg-[#6A5AE0] text-white font-medium md:text-lg rounded-md">
+      <Button onClick={handleSubmit} className="py-2 text-center px-10 mx-3 bg-[#6A5AE0] text-white font-medium md:text-lg rounded-md">
         Start
       </Button>
     </form>

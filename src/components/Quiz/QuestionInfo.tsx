@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Question } from "@/interfaces/Question";
 import { Button } from "@nextui-org/button";
+import { Clock, ChevronLeft, ChevronRight, Flag } from "lucide-react";
 
 function QuestionInfo({ questionId }: { questionId: number }) {
   const { questions, setQuestionId } = useQuiz();
@@ -24,48 +25,51 @@ function QuestionInfo({ questionId }: { questionId: number }) {
 
   return (
     <section className="flex-col items-center justify-between h-full">
-      <div className="bg-white rounded-md p-5 flex flex-col justify-start items-center gap-2 shadow-lg">
-        <h1>Question {questionId + 1}</h1>
+      <div className="bg-[#6A5AE0] rounded-t-md text-white p-5 flex flex-col justify-start items-center gap-2 shadow-lg">
+        <div className="flex items-center space-x-2">
+          <Clock className="h-5 w-5" />
+          <span className="font-bold">60:00</span>
+        </div>
+        <p className="font-medium text-small">
+          Question {questionId + 1} of {questions?.length}
+        </p>
       </div>
-      <div className="flex flex-col justify-center bg-white mt-2 rounded-md shadow-lg p-5">
-        <h1 className="font-bold text-6xl p-10 text-center">
-          {question?.question}
-        </h1>
+      <div className="flex flex-col justify-center bg-white rounded-b-md shadow-lg p-5">
+        <h1 className="font-bold text-2xl mb-4">{question?.question}</h1>
         <div>
           {question?.answers &&
             question.answers.map((option: string, index: number) => (
-              <div key={index} className="mb-2">
-                <input
-                  type="radio"
-                  id={option}
-                  name="option"
-                  value={index + 1}
-                  checked={userResponse === index + 1}
-                  onChange={() => handleOptionChange(index + 1)}
-                />
-                <label className="text-3xl m-5" htmlFor={option}>
-                  {option}
-                </label>
-              </div>
+              <Button
+                key={index}
+                className="w-full justify-start border-medium my-2 text-lg text-left h-auto py-4 px-4 hover:bg-[#6A5AE0] hover:text-white"
+              >
+                {option}
+              </Button>
             ))}
         </div>
-        <div className="flex justify-between py-10">
+        <div className="flex justify-between pt-10">
           <Button
-            className="py-2 mx-3 bg-[#6A5AE0] text-white font-medium text-lg rounded-md"
+            className="flex items-center space-x-2 border-medium py-3 font-semibold hover:bg-black/10 hover:cursor-pointer"
             onClick={() => questionId > 0 && setQuestionId(questionId - 1)}
             disabled={questionId === 0}
           >
-            Anterior
+            <ChevronLeft className="h-4 w-4" />
+            <span>Previous</span>
+          </Button>
+          <Button className="flex items-center space-x-2 border-small py-3 font-semibold bg-white text-[#6A5AE0] border-[#6A5AE0] hover:bg-[#6A5AE0] hover:text-white">
+            <Flag className="h-4 w-4" />
+            <span>Mark Question</span>
           </Button>
           <Button
-            className="py-2 mx-3 bg-[#6A5AE0] text-white font-medium text-lg rounded-md"
+            className="flex items-center space-x-2 border-small py-3 font-semibold bg-[#6A5AE0] text-white hover:bg-[#5849c7] hover:cursor-pointer"
             onClick={() =>
               questionId < (questions?.length ?? 0) - 1 &&
               setQuestionId(questionId + 1)
             }
             disabled={questionId === (questions?.length ?? 0) - 1}
           >
-            Siguiente
+            <span>Next</span>
+            <ChevronRight className="h-4 w-4" />
           </Button>
           {/* {question?.state !== 3 ? (
             <button
