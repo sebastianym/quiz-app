@@ -1,7 +1,6 @@
 "use client";
 import { useQuiz } from "@/context/QuizContext";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Question } from "@/interfaces/Question";
 import { Button } from "@nextui-org/button";
 import { Clock, ChevronLeft, ChevronRight, Flag } from "lucide-react";
@@ -9,19 +8,18 @@ import { Clock, ChevronLeft, ChevronRight, Flag } from "lucide-react";
 function QuestionInfo({ questionId }: { questionId: number }) {
   const { questions, setQuestionId } = useQuiz();
   const [question, setQuestion] = useState<Question | null>(null);
-  const [userResponse, setUserResponse] = useState<number | null>(null);
-  const router = useRouter();
+  //const [userResponse, setUserResponse] = useState<number | null>(null);
 
   useEffect(() => {
     if (questions) {
       setQuestion(questions[questionId]);
-      setUserResponse(questions[questionId].userResponse || null);
+      //setUserResponse(questions[questionId].userResponse || null);
     }
   }, [questionId, questions]);
 
-  const handleOptionChange = (index: number) => {
-    setUserResponse(index);
-  };
+  // const handleOptionChange = (index: number) => {
+  //   setUserResponse(index);
+  // };
 
   return (
     <section className="flex-col items-center justify-between h-full">

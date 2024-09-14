@@ -18,12 +18,12 @@ export default function Home() {
   const router = useRouter();
 
   //detect change in input
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
 
   //submit form and validate
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     //form is not submitted automatically
     e.preventDefault();
 
@@ -69,7 +69,7 @@ export default function Home() {
             <div className="w-full text-start flex-col px-5 items-center justify-center md:mt-6 mt-2">
               <p className="lg:text-xl md:text-lg text-black/70 mx-3 font-medium my-4">
                 Welcome back, <span className="text-[#b249f8]">{name}</span>!
-                Let's get started with the quizzes!
+                Let&apos;s get started with the quizzes!
               </p>
               <Button
                 onClick={() => router.push("/topics")}

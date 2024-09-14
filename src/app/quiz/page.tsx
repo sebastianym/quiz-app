@@ -25,7 +25,7 @@ function QuizPage() {
               }`}
               onClick={() => setQuestionId(question.id)}
             >
-              {question.id}
+              {index + 1}
             </Button>
           ))}
         </div>

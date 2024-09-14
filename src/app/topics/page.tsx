@@ -1,16 +1,7 @@
-"use client";
 import QuizCard from "@/components/Quiz/QuizCard";
-import { useQuiz } from "@/context/QuizContext";
-import { useEffect } from "react";
 import Header from "@/components/Home/Header";
 
 function Home() {
-  const { name, getFromLocalStorage } = useQuiz();
-
-  useEffect(() => {
-    getFromLocalStorage();
-  }, []);
-
   return (
     <main className="flex flex-col justify-evenly h-full bg-white">
       <Header />

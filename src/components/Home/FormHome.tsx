@@ -5,9 +5,9 @@ function FormHome({
   value,
   handleChange,
 }: {
-  handleSubmit: any;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   value: string;
-  handleChange: any;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <form className="flex w-full m-10 p-4" onSubmit={handleSubmit}>
@@ -18,7 +18,10 @@ function FormHome({
         value={value}
         onChange={handleChange}
       />
-      <Button onClick={handleSubmit} className="py-2 text-center px-10 mx-3 bg-[#6A5AE0] text-white font-medium md:text-lg rounded-md">
+      <Button
+        type="submit"
+        className="py-2 text-center px-10 mx-3 bg-[#6A5AE0] text-white font-medium md:text-lg rounded-md"
+      >
         Start
       </Button>
     </form>
